@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "temporal-recall"
+version = "0.1.0"
+description = "An offline benchmark for the temporal correctness of agent memory: does it return the right fact as facts evolve and as-of past states? Plus a lightweight bitemporal memory store."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "Keyan Mikaili" }]
+keywords = ["llm", "agent-memory", "bitemporal", "temporal-reasoning", "benchmark", "templama", "memory"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Intended Audience :: Developers",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = ["numpy>=1.23", "scikit-learn>=1.1"]
+
+[project.optional-dependencies]
+bench = ["huggingface_hub>=0.20"]
+dev = ["pytest>=7"]
+
+[project.scripts]
+temporal-recall = "temporal_recall.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/Keyan-sm/temporal-recall"
+
+[tool.setuptools.packages.find]
+include = ["temporal_recall*"]
