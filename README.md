@@ -87,7 +87,7 @@ bitemporal store keys its versions by entity, so `latest` and `bitemporal` selec
 the retrieved entity rather than pay for retrieval noise (a different entity the embedder
 pulled in).
 
-## What's faithful, and what's mine
+## Precedent and iteration
 
 | Component | Source | Fidelity |
 | --- | --- | --- |
@@ -97,20 +97,14 @@ pulled in).
 | `flat` and `latest-wins` baselines | mine | They stand in for common naive memory designs |
 | The open problem this targets | Mem0's 2026 memory landscape | Motivation: change as replacement, not evolution; temporal queries are hardest |
 
-## Scope and honest limitations
+## Scope
 
-- **Bitemporal's ~1.0 is by construction, and that is the point.** It carries each fact's
-  valid time, and the gold answer always sits among the candidates (ceiling = 1.0), so it
-  wins. The benchmark measures how far the naive designs fall and gives a reproducible
-  harness plus a reference store, not a SOTA number.
-- **Retrieval is easy in TempLAMA.** The query carries the subject name, which pushes the
-  ceiling to 1.0 and isolates temporal selection. Paraphrase-robust retrieval is roadmap.
-- **Valid time only.** Zep's full bitemporal model also tracks ingestion (transaction) time
-  for audit and retroactive correction. The store records `system_time`, but the benchmark
-  does not yet exercise it.
-- **Source-data noise.** A handful of TempLAMA rows list more than one entity for a year.
-  Scoring is exact match over the gold alias set, so it inherits that small noise rather than
-  claiming perfect labels.
+- **Retrieval is easy.** TempLAMA queries carry the subject name, so the ceiling is 1.0 and
+  the test isolates temporal selection. Paraphrase-robust retrieval is roadmap.
+- **Valid time only.** Zep also tracks ingestion time for audit and retroactive correction;
+  the store records `system_time` but the benchmark does not yet exercise it.
+- **Source-data noise.** A few TempLAMA rows list more than one entity per year, which
+  exact-match scoring inherits.
 
 ## Module map
 
