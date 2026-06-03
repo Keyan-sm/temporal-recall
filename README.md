@@ -1,8 +1,10 @@
 # temporal-recall
 
 **A benchmark for whether agent memory returns the right fact as the world changes, and
-whether it can tell you what was true last year.** Small, offline, LLM-free, run on real
-evolving facts. Ships a lightweight bitemporal memory store that passes it.
+whether it can tell you what was true last year.** Small, offline, and scored by exact match over
+TF-IDF retrieval, it runs on TempLAMA's evolving Wikidata facts (Dhingra et al., 2022)
+and ships a lightweight store that implements the valid-time dimension of Zep's
+bitemporal model (Rasmussen et al., 2025), with no knowledge graph or database.
 
 On 6,000 queries over real Wikidata facts that change over time (TempLAMA), three memory
 designs share the same retrieval and split apart once time matters:
